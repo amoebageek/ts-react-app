@@ -1,9 +1,0 @@
-{
-  "cahceGroups":{
-    "commons":{
-      "test":"/[\\/]node_modules[\\/]/",
-      "name":"vendors",
-      "chunk": "all"
-    }
-  }
-}

@@ -1,6 +1,14 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
-const appName = 'Webpack Demo App';
-setTimeout(
-  () => alert(`Thanks for using ${appName}`)
-, 500);
+class Application extends Component {
+	render() {
+		return (
+			<div>
+				Hello
+			</div>
+		);
+	}
+}
 
+ReactDOM.render(<Application />, document.getElementById('root'));
