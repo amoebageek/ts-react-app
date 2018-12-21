@@ -8,8 +8,8 @@
     },
     "rules": {
         "no-unused-vars": 1,
-        "max-len": [1, 120, 2, { "ignoreComments": true }],
-        "indent": [2, "tab", { "VariableDeclarator": 1 }],
+        "max-len": [1, 120, 2, {"ignoreComments": true}],
+        "indent": [2, "tab", {"VariableDeclarator": 1}],
         "class-methods-use-this": 0,
         "no-tabs": [
             "error",

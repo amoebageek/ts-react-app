@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import App from './containers/App';
 
-class Application extends Component {
+class Application extends React.Component {
 	render() {
 		return (
-			<div>
-				Hello
-			</div>
+			<App />
 		);
 	}
 }

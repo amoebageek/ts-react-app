@@ -1,7 +1,18 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 
 module.exports = {
+	resolve: {
+		extensions: [
+			'.ts',
+			'.tsx',
+			'.js',
+			'.jsx',
+		],
+	},
+	devtool:
+		'source-map',
 	entry:
 		'./src/index.js',
 	output: {
@@ -23,6 +34,13 @@ module.exports = {
 				exclude: /(node_modules)/,
 				use: [
 					'babel-loader',
+					'eslint-loader',
+				],
+			},
+			{
+				test: /\.tsx?$/,
+				use: [
+					'awesome-typescript-loader',
 					'eslint-loader',
 				],
 			},
@@ -53,5 +71,36 @@ module.exports = {
 					'./src/index.html',
 			},
 		),
+		new SimpleProgressWebpackPlugin(),
+		function () {
+			this.plugin(
+				'done',
+				(stats) => {
+					if (
+						stats
+							.compilation
+							.errors
+						&& stats
+							.compilation
+							.errors
+							.length
+					) {
+						console.log(
+							'Found following error(s):',
+						);
+						stats.compilation.errors.forEach(
+							(theError) => {
+								console.log(
+									theError.error,
+								);
+							},
+						);
+						process.exit(
+							1,
+						);
+					}
+				},
+			);
+		},
 	],
 };
