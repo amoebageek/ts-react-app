@@ -1,13 +1,17 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './containers/App';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import {Provider} from "react-redux";
+import store from "./app/store";
+import App from "./home/App";
 
 class Application extends React.Component {
-	render() {
-		return (
-			<App />
-		);
-	}
+    render() {
+        return (
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
+    }
 }
 
-ReactDOM.render(<Application />, document.getElementById('root'));
+ReactDOM.render(<Application />, document.getElementById("root"));
