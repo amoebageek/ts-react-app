@@ -1,9 +1,10 @@
 import {put, takeEvery, all} from "redux-saga/effects";
-import actionTypes, {firstActionSuccess} from "../duck/action";
+import actionTypes, {clickHandlerSuccess} from "../duck/action";
+import {AnyAction} from "redux";
 
-function* transformFunction() {
-    yield put(firstActionSuccess("5"));
+function* transformFunction(action: AnyAction) {
+    yield put(clickHandlerSuccess());
 }
 export function* watchFirstAction() {
-    yield takeEvery(actionTypes.FIRST_ACTION, transformFunction);
+    yield takeEvery(actionTypes.CLICK_ACTION, transformFunction);
 }

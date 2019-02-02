@@ -1,7 +1,8 @@
 import * as React from "react";
 import {bindActionCreators, Dispatch} from "redux";
 import {connect} from "react-redux";
-import {firstAction} from "./duck/action";
+import RootComponents from "./components/RootComponents";
+import {clickHandler, onInputChange} from "./duck/action";
 import {appState, appActions} from "../app/duck/types";
 /**
  * Interface sample structure to define types of your app container
@@ -9,6 +10,8 @@ import {appState, appActions} from "../app/duck/types";
 
 interface AppContainerPropsInterface {
     actions: appActions;
+    count: number;
+    inputValue: string;
 }
 interface AppContainerStateInterface extends AppContainerPropsInterface {}
 
@@ -18,17 +21,17 @@ class App extends React.Component<
 > {
     constructor(props: AppContainerPropsInterface) {
         super(props);
-        this.props.actions.firstAction("1");
     }
-    componentWillMount() {
-        console.log(this.props.actions.firstAction("2"));
-    }
-
     render() {
         return (
             <React.Fragment>
-                <h3>Container</h3>
-                <button>Click</button>
+                <RootComponents
+                    label={"Click"}
+                    buttonActionCallBack={this.props.actions.clickHandler}
+                    value={this.props.count}
+                    inputActionCallBack={this.props.actions.onInputChange}
+                    inputValue={this.props.inputValue}
+                />
             </React.Fragment>
         );
     }
@@ -37,13 +40,16 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     // make this more generic
     return {
         actions: {
-            firstAction: bindActionCreators(firstAction as any, dispatch)
+            clickHandler: bindActionCreators(clickHandler as any, dispatch),
+            onInputChange: bindActionCreators(onInputChange as any, dispatch)
         }
     };
 };
 const mapStateToProps = (state: appState) => {
     return {
-        home: state.home
+        home: state.homeReducer.home,
+        count: state.homeReducer.count,
+        inputValue: state.homeReducer.inputValue
     };
 };
 const Home = connect(

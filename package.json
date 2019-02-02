@@ -4,13 +4,14 @@
     "description": "",
     "main": "./app.js",
     "scripts": {
-        "start": "webpack-dev-server",
+        "start": "env-cmd .env webpack-dev-server ",
         "build": "webpack",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "env-cmd": "^8.0.2",
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
         "react-redux": "^6.0.0",

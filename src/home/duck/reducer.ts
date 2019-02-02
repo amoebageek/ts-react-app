@@ -1,19 +1,28 @@
 import {handleActions} from "redux-actions";
+import {ReducerInterface} from "../../app/duck/types";
 import actionTypes from "./action";
 
-const INIT_STATE = {
-    home: {}
+const INIT_STATE: ReducerInterface = {
+    home: "",
+    count: 0,
+    inputValue: ""
 };
-const homeReducer = handleActions(
+const HomeReducer = handleActions(
     {
-        [actionTypes.FIRST_ACTION_SUCCSS]: (state, action) => {
+        [actionTypes.CLICK_ACTION_SUCCSS]: (state, action) => {
             return {
                 ...state,
-                count: action.payload
+                count: state.count + 1
+            };
+        },
+        [actionTypes.ON_INPUT_CHANGE]: (state, action) => {
+            return {
+                ...state,
+                inputValue: action.payload ? action.payload : ""
             };
         }
     },
     INIT_STATE
 );
 
-export default homeReducer;
+export default HomeReducer;

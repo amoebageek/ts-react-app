@@ -1,7 +1,12 @@
-export interface appState {
+export interface ReducerInterface {
     home: string;
+    count: number;
+    inputValue: string;
 }
-
+export interface appState {
+    homeReducer: ReducerInterface;
+}
 export interface appActions {
-    firstAction(payload?: string): void;
+    clickHandler(): void;
+    onInputChange(payload?: string): void;
 }

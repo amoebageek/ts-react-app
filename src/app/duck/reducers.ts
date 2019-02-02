@@ -1,8 +1,7 @@
 import {combineReducers} from "redux";
 import homeReducer from "../../home/duck/reducer";
 
-const reducers = combineReducers({
-    // application: appReducer,
-    home: homeReducer
+const allReducers = combineReducers({
+    homeReducer
 });
-export default reducers;
+export default allReducers;

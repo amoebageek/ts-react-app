@@ -1,7 +1,8 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SimpleProgressWebpackPlugin = require("simple-progress-webpack-plugin");
-
+console.log("Process", process.env);
 module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"]
@@ -61,6 +62,9 @@ module.exports = {
                     // process.exit(1);
                 }
             });
-        }
+        },
+        new webpack.DefinePlugin({
+            APP_MODE: JSON.stringify(process.env.MODE)
+        })
     ]
 };

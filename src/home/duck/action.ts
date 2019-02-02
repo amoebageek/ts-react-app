@@ -1,11 +1,15 @@
 import {createAction} from "redux-actions";
 
 const actionTypes = {
-    FIRST_ACTION: "FIRST_ACTION",
-    FIRST_ACTION_SUCCSS: "FIRST_ACTION_SUCCSS"
+    CLICK_ACTION: "CLICK_ACTION",
+    CLICK_ACTION_SUCCSS: "CLICK_ACTION_SUCCSS",
+    ON_INPUT_CHANGE: "ON_INPUT_CHANGE"
 };
 export default actionTypes;
 
-export const firstAction = createAction(actionTypes.FIRST_ACTION);
+export const clickHandler = createAction(actionTypes.CLICK_ACTION);
 
-export const firstActionSuccess = createAction(actionTypes.FIRST_ACTION_SUCCSS);
+export const clickHandlerSuccess = createAction(
+    actionTypes.CLICK_ACTION_SUCCSS
+);
+export const onInputChange = createAction(actionTypes.ON_INPUT_CHANGE);
